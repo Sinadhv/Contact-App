@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 } from 'uuid';
 
 import ContactsList from './ContactsList';
+import styles from './Contacts.module.css';
 
 function Contacts() {
  const [contacts , setContacts] = useState([]);
@@ -51,15 +52,15 @@ const deleteHandler = (id) => {
 }
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.form}>
        <input type="text" placeholder='Name' name = "name" value={contact.name} onChange={changeHandler}/>
        <input type="text" placeholder='Last Name' name = "lastName" value={contact.lastName} onChange={changeHandler}/>
        <input type="email" placeholder='Email' name = "email" value={contact.email} onChange={changeHandler}/>
        <input type="number" placeholder='Phone' name = "phone" value={contact.phone} onChange={changeHandler}/>
        <button onClick={addHandler}>Add Contact</button>
       </div>
-      <div>{alert && <p>{alert}</p>}</div>
+      <div className={styles.alert}>{alert && <p>{alert}</p>}</div>
       <ContactsList contacts={contacts} deleteHandler={deleteHandler}/>
     </div>
   )
